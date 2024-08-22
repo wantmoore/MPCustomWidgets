@@ -8,8 +8,8 @@ GO
 
 ALTER PROCEDURE [dbo].[api_Custom_DigitalSignageEvents]
 	@DomainID int
-	,@Username nvarchar(75) = NULL --'chrisk@acst.com' --'jmoore'
-    ,@Location_ID int = NULL
+	,@Username nvarchar(75) = NULL
+    ,@LocationID int = NULL
 AS
 BEGIN
 
@@ -29,6 +29,7 @@ LEFT JOIN Rooms R ON R.Room_ID = ER.Room_ID
 LEFT JOIN Building_Floors BF ON BF.Building_Floor_ID = R.Building_Floor_ID
 
 WHERE E.Event_Start_Date BETWEEN DATEADD(MINUTE, -60, GETDATE()) AND DATEADD(MINUTE, 1180, GETDATE())
+AND E.Location_ID = @LocationID
 AND E.Cancelled <> 1 
 AND E._Approved <> 0 
 --AND E.Event_Type_ID NOT IN (38)
