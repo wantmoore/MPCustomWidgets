@@ -1,0 +1,163 @@
+/* Flex Grid and fonts */
+body, html {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #262427;
+}
+
+.lato-thin {
+  font-family: "Lato", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.lato-light {
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.lato-regular {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.lato-bold {
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.lato-black {
+  font-family: "Lato", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.lato-thin-italic {
+  font-family: "Lato", sans-serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.lato-light-italic {
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.lato-regular-italic {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.lato-bold-italic {
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.lato-black-italic {
+  font-family: "Lato", sans-serif;
+  font-weight: 900;
+  font-style: italic;
+}
+
+
+.parent {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 190px 20px repeat(3, 268px) 3px 63px;
+    gap: 8px;
+    width: 1920px;
+    height: 1080px;
+    font-family: "Lato", sans-serif;
+    font-style: normal;
+    text-transform: uppercase;
+    color: #ffffff;
+    text-align: center;
+}
+
+.div1-header {
+/*     grid-column: span 3 / span 3;
+    grid-column-start: 2; */
+    grid-column: span 5 / span 5;
+    grid-row-start: 1;
+    letter-spacing: 25px;
+    font-size: 7em;
+}
+
+.div2-hr {
+    grid-column: span 5 / span 5;
+    grid-row-start: 2;
+    background-color: #aad43c;
+
+}
+
+.div-event1, .div-event2, .div-event3 {
+    grid-column: span 3 / span 3;
+    grid-column-start: 2;
+    font-size: 300%;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.div-event1 {
+    grid-row-start: 3;
+}
+
+.div-event2 {
+    grid-row-start: 4;
+}
+
+.div-event3 {
+    grid-row-start: 5;
+}
+
+.div6-hr {
+    grid-column: span 5 / span 5;
+    grid-row-start: 6;
+    background-color: #ffffff;
+}
+
+.div7-date {
+    grid-row-start: 7;
+    font-size: 150%;
+    color: #aad43c;
+    text-align: left;
+    justify-content: center;
+    align-items: center;
+    font-size: 5em;
+    font-weight: bolder;
+}
+
+.div8-logo {
+    grid-column-start: 5;
+    grid-row-start: 7;
+    text-align: right;
+}
+
+.event-title {
+  font-weight: bold;
+  font-size: 1.5em;
+  letter-spacing: 5px;
+  /* text-decoration-line: underline;
+  text-decoration-color: #aad43c;
+  text-decoration-thickness: auto;*/
+}
+
+.event-pipe {
+  color:#aad43c;
+}
+
+.event-room, .event-room-level {
+  color: #ccc;
+}
