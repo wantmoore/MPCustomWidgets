@@ -2,7 +2,7 @@
 
 Registration-events grid for the Granger Church website. Renders a card per upcoming event with a date badge, image, title, campus, and short description; clicking a card opens a portal-mounted modal with the full description and a registration link.
 
-Backed by `api_Custom_GetRegistrationEvents` (in `StoredProc/`), filtered to non-cancelled, approved, future-dated events that match the visibility/event-type allowlist baked into the SP.
+Backed by `api_Custom_GetRegistrationEvents` (in `StoredProc/`), filtered to non-cancelled, approved, future-dated events at visibility level "Public". Event types default to those flagged `Public_By_Default` in MP, or an explicit comma-delimited list passed via `@EventTypeIDList`.
 
 ## Features
 
@@ -11,6 +11,7 @@ Backed by `api_Custom_GetRegistrationEvents` (in `StoredProc/`), filtered to non
 - **Series capping.** `data-max-series-events="N"` keeps only the first N events per series (by `Sequence_Order`); useful for long recurring series like Day Camp weeks.
 - **Domain-local datetimes.** MP API datetimes carry a misleading `Z` suffix but represent local time; the widget parses them as such and formats with Granger's preferred style ("5 p.m.", "9:30 a.m.").
 - **Cross-month and same-day date badges.** A single date badge automatically chooses between single-day, in-month range, and cross-month range layouts.
+- **Registration link routing.** The "Register Now" button shows only when the SP computes `Show_Registration = 1` (registration active, configured via an online product *or* an external URL, and inside the registration window). When the event has an `External_Registration_URL`, the button links to that URL in a new tab; otherwise it falls back to the internal `/event-details?id=<Event_ID>` page.
 
 ## Search
 
@@ -31,7 +32,7 @@ To extend the synonym map or stop word list, edit the constants at the top of `G
 - `data-host="grangerchurch"` — required.
 - `data-sp="api_Custom_GetRegistrationEvents"` — required.
 - `data-template="/Widgets/GrangerEvents/Template/GrangerEvents.html"` — required.
-- `data-params="@CongregationID=1"` etc. — pass any of the SP's optional filters: `@CongregationID`, `@ProgramID`, `@MinistryID`, `@Featured`. Combine with `&`.
+- `data-params="@CongregationID=1"` etc. — pass any of the SP's optional filters: `@CongregationID`, `@ProgramID`, `@MinistryID`, `@Featured`, `@EventTypeIDList` (comma-delimited event-type IDs; defaults to `Public_By_Default` types when omitted). Combine with `&`.
 - `data-max-series-events="2"` — cap each event series at N occurrences (default: no cap).
 - `?s=foo` (URL query string) — adds `@Keyword=foo` to the SP params for server-side keyword filtering. Independent of the in-page Fuse search; the SP narrows the dataset and Fuse runs on top of whatever the SP returned.
 
