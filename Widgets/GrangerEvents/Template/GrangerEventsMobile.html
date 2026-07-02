@@ -44,7 +44,12 @@
               {{ e.Additional_Description | default: e.Description | default: "" }}
             </div>
             {%- if e.Show_Registration -%}
-              <a class="gem-register" href="/event-details?id={{ e.Event_ID }}" data-event-id="{{ e.Event_ID }}">Register Now</a>
+              {%- assign ext_url = e.External_Registration_URL | default: "" -%}
+              {%- if ext_url != "" -%}
+                <a class="gem-register" href="{{ ext_url }}" target="_blank" rel="noopener noreferrer">Register Now</a>
+              {%- else -%}
+                <a class="gem-register" href="/event-details?id={{ e.Event_ID }}" data-event-id="{{ e.Event_ID }}">Register Now</a>
+              {%- endif -%}
             {%- endif -%}
           </div>
         </div>
